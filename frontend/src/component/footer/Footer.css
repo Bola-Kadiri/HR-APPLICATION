@@ -1,0 +1,114 @@
+
+
+.footer{
+    width: 100%;
+    min-height: 70vh;
+    background-color: #0c1b32;
+}
+.footer-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.footer-content-left{
+    width: 30%;
+    margin-top: -90px;
+}
+
+.footer-content-right{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+.footer-content-right .category h2{
+    color: #fff;
+}
+.footer-content-right .category a{
+    text-decoration: none;
+    color: #fff;
+    margin-top: 15px;
+}
+.footer-content-right .company h2{
+    color: #fff;
+}
+.footer-content-right .company a{
+    text-decoration: none;
+    color: #fff;
+    margin-top: 15px;
+}
+.footer-content-right .newsletter h2{
+    color: #fff;
+}
+
+.footer-content-right .newsletter a{
+    text-decoration: none;
+    color: #fff;
+    margin-top: 15px;
+    width: 80%;
+}
+
+.footer-content-right .newsletter input{
+    width: 100%;
+    height: 55px;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 18px;
+    margin: 20px 0px;
+    border: none;
+    outline: none;
+}
+
+.footer-content-right .newsletter button{
+    background-color: #76c04e;
+    width: 100%;
+    height: 55px;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: #fff
+}
+.footer-content-right div a{
+    display: block;
+}
+
+.footer-content-left img{
+    width: 100%;
+    max-width: 110px;
+    margin: 0px;
+    padding: 0px;
+    margin-left: -30px;
+}
+
+.footer-content-left p{
+    color: #fff;
+    line-height: 25px;
+}
+.footer-content-left-icons{
+    display: flex;
+    margin-top: 20px;
+    
+  
+}
+
+.footer-content-left .icons{
+   margin-right: 10px;
+   width: 30px;
+   height: 30px;
+   background-color: rgba(255, 255, 255, 0.3);
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.footer-content-left .icons .icon{
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}

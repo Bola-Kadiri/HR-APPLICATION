@@ -1,0 +1,8 @@
+.menu {
+    min-height: 100vh; /* Ensure it covers the entire viewport height */
+    transition: width 0.2s;
+    color: #000;
+}
+
+
+

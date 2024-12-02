@@ -1,0 +1,98 @@
+/* Smooth scrolling behavior across the page */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Navigation Bar Styling */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff;
+  
+}
+
+/* Logo Styling */
+.nav-bar img {
+  max-width: 110px;
+  width: 100%;
+}
+
+/* Navigation Links Container */
+.nav-bar .nav-links {
+  display: flex;
+  gap: 45px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.nav-bar .nav-links a{
+  font-weight: 700;
+}
+
+/* Individual Navigation Link Styling */
+.nav-link {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;
+  text-decoration: none;
+  font-weight: 600;
+  color: #000; /* Default link color */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Button Styling Inside the Navigation Links */
+.nav-links button {
+  width: 150px;
+  padding: 15px 20px;
+  background-color: #76c04e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Underline Animation for Links */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px; /* Position of underline */
+  left: 50%;
+  background-color: #76c04e;
+  transform: translateX(-50%);
+  transition: all 0.1s ease;
+}
+
+/* Active Link Styling */
+.nav-link.active {
+  color: #000; /* Active link color */
+}
+
+/* Active State Underline Animation */
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+  transform: translateX(0);
+}
+
+/* Underline Animation on Hover or Focus */
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+  left: 0;
+  transform: translateX(0);
+}
+
+.nav-links button a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}

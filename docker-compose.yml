@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: alphamead-hr-central
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1511
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+    ports:
+      - "5432:5432"  # Optional if you want to connect to PostgreSQL from outside Docker
+
+  django:
+    build:
+      context: ./backend_app
+    command: >
+      bash -c "python manage.py wait_for_db && 
+               python manage.py migrate && 
+               gunicorn backend_app.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - ./backend_app:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - app_network
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: alphamead-hr-central
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: 1511
+
+  react:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - app_network
+    depends_on:
+      - django
+    volumes:
+      - ./frontend:/app
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

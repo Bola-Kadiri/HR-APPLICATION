@@ -1,0 +1,189 @@
+
+
+.joblist-container{
+    min-height: 85vh;
+    width: 100%;
+    background-color: #28195c; /* Black overlay with 50% opacity */
+    background-blend-mode: overlay; /* Optional: Set blend mode */
+}
+
+
+.form-parent{
+    display: flex;
+    justify-content: center;
+}
+.job-list-content{
+    padding: 20px;
+    margin-left: 52px;
+}
+
+.input-form{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 100px;
+    width: 90%;
+    min-height: 100vh;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    margin-top: -155px;
+    border-radius: 20px;
+    padding-top: 80px;
+  
+}
+
+
+Form{
+    width: 60%;
+    padding: 30px;
+}
+
+.form-content h2{
+    margin-bottom: 10px;
+}
+.description p{
+  font-size: 20px;
+  line-height: 30px;
+  word-spacing: 3px;
+  color: #818698;
+}
+.form-right{
+    width: 350px;
+    height: 350px;
+    background-color: #f2f1f6;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-right: 30px;
+}
+
+Form button{
+    background-color: #76c04e;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding: 15px 25px;
+    border: none;
+    outline: none;
+    color: #Fff;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.label{
+   margin-top: 20px;
+}
+.form-input{
+    width: 60%;
+}
+
+.form-input h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #231459;
+}
+
+
+
+label{
+    display: block;
+}
+
+.name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input label{
+    color: #231459;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.name input{
+    width: 350px;
+    height: 55px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    font-size: 18px;
+    font-weight: 800px;
+}
+.phone-email{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+.phone-email input{
+    width: 350px;
+    height: 55px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    font-size: 17px;
+}
+.cover-letter{
+    width: 100%;
+    margin: 15px 0px;
+}
+.form hr{
+    height: 0.1px;
+    color: #e5e5e5;
+}
+
+
+
+
+/* Hide the original radio button */
+.custom-radio {
+    appearance: none; /* Removes default styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px; /* Width of the square */
+    height: 20px; /* Height of the square */
+    background-color: white; /* Background color of the square */
+    border: 2px solid #999; /* Border around the square */
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Checked state styling */
+.custom-radio:checked {
+    background-color: green; /* Background color when checked */
+    border-color: green; /* Border color when checked */
+    position: relative;
+}
+
+/* Optional: Add a checkmark inside the square */
+.custom-radio:checked::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: white; /* Color of the checkmark */
+}
+
+
+.job-des-right{
+    width: 35%;
+}
+
+
+
+.need-help{
+    width: 100%;
+    height: 400px;
+    background-color: rgba(120, 117, 140, 0.2);
+    border-radius: 10px;
+}
+
+

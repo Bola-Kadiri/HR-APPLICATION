@@ -1,0 +1,403 @@
+
+.home {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(261.16deg, rgba(17, 47, 200, 0.1) 12.85%, rgba(217, 15, 100, 0.1) 87.91%), linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 75%), url('../../assets/giant-building-with-sun.jpg');
+    background-size: cover;
+  }
+  
+.home-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.left-para{
+    width: 48%;
+}
+.left-para span{
+    font-size: 20px;
+    color: #76c04e;
+    font-weight: 500;
+}
+.left-para h1{
+    font-size: 48px;
+    color: rgb(240, 240, 240);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.left-para p{
+    color: rgb(240, 240, 240);
+    font-size: 16px;
+    line-height: 25px;
+    word-spacing: 5px;
+}
+.left-para button{
+    width: 150px;
+    padding: 15px 20px;
+    background-color: #76c04e;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+.job-img{
+    width:48%;
+    position: relative;
+    position: relative;
+    margin-left: 30px;
+}
+ .job-img img{
+    width: 100%;
+   
+    
+}
+
+.about{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #2b4c35;
+    background-color: #fff;
+}
+
+/* Home.css */
+
+/* Bounce keyframe animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Apply bounce animation to the image */
+  .job-img img {
+    animation: bounce 2s ; /* Duration and repeat */
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Optional: Enhance bounce with hover effect */
+  .job-img img:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+  }
+  /* Home.css */
+
+/* Container: initial fade-in animation */
+.container {
+    opacity: 0;
+    animation: containerFadeIn 1s forwards;
+  }
+  
+  @keyframes containerFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Slide-in with fade effect */
+  @keyframes slideFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Apply to text elements with staggered delays */
+  .left-para span,
+  .left-para h1,
+  .left-para p {
+    opacity: 0;
+    animation: slideFadeIn 0.8s forwards;
+  }
+  
+  .left-para span {
+    animation-delay: 0.5s;
+  }
+  
+  .left-para h1 {
+    animation-delay: 0.8s;
+  }
+  
+  .left-para p {
+    animation-delay: 1.5s;
+  }
+
+  #about-section{
+     width: 100%;
+  }
+  
+  #job-list{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(229, 229, 229, 0.1); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the job-content horizontally */
+  }
+  .job-list-heading{
+    margin: 30px 0px 10px 0px;
+    padding: 30px 0px 0px 20px;
+  }
+  .job-list-heading h1{
+    font-size: 45px;
+    color: #000;
+  }
+  .job-list-heading p{
+    color: #000;
+    padding: 10px 10px 0px 0px;
+    font-size: 18px;
+  }
+  
+  
+  .job-card{
+    box-shadow:0px 4px 10px 0px #679FD24F;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 430px;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.8s ease, box-shadow 0.3s ease;
+    padding: 10px 10px;
+}
+
+.job-card span{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.job-card h5{
+  margin: 10px 0px;
+  font-size: 20px;
+ 
+}
+
+.job-card p{
+  margin: 10px 0px;
+  font-size: 16px;
+  word-spacing: 5px;
+  line-height: 20px;
+}
+.job-card:hover {
+  transform: scale(0.98); /* Slightly scale down on press */
+}
+.job-card-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.job-card-bottom p{
+  font-weight: 600;
+  font-family: Lato;
+  color: #2b4c35;
+}
+.job-card-bottom button{
+  padding: 10px 20px;  font-size: 16px;
+  background-color: #76c04e;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Container for the job list */
+
+
+/* Flexbox layout for job cards */
+.job-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 35px; /* Add spacing between job cards */
+  flex-wrap: wrap; /* Wrap cards on smaller screens */
+  padding: 20px;
+  margin: auto;
+
+}
+
+
+
+.job-card h2{
+  color: #fff;
+}
+
+.job-card p{
+  color: #000
+}
+/* Hover effect for job cards */
+.job-card:hover {
+  transform: scale(1.05); /* Slight scale on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+.active-type{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq{
+  width: 100%;
+  padding: 20px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.faq-content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-left{
+  width: 49%;
+}
+.faq-left h1{
+  font-size: 43px;
+  margin-bottom: 15px;
+}
+.faq-left p{
+  color: #4caf50;
+  margin: 0px 15px 0px 0px;
+  padding-bottom: 15px;
+  font-weight: 700px;
+  font-size: 22px;
+}
+
+.faq-left h3{
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+.faq-left span{
+  line-height: 25px;
+  word-spacing: 2px;
+  color: #868686;
+  font-size: 18px;
+}
+.faq-right{
+  width: 49%;
+}
+/* General accordion container styling */
+.accordion-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Each accordion section */
+.accordion {
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #f5f5f5;
+}
+
+/* Accordion header styling */
+.accordion-header {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  height: 70px;
+}
+
+/* Change the background to green when expanded */
+.accordion-header.expanded {
+  background-color: #4caf50;
+  color: white; /* Optional: make text white when active */
+  height: 100px;
+}
+
+/* Accordion title */
+.accordion-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Accordion toggle icon */
+.accordion-icon {
+  font-size: 25px;
+  font-weight: 900px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the icon when expanded */
+.accordion-icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* Accordion content with height animation */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+  height: 100px;
+}
+
+/* Expand content when accordion is active */
+.accordion.active .accordion-content {
+  max-height: 100px; /* Adjust this based on your content size */
+  padding: 15px;
+}
+
+.accordion-content p {
+  margin: 0;
+  color: #000;
+  font-size: 17px;
+}
+
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .job-content {
+    display: flex;
+    flex-direction: column;
+      justify-content: center; /* Center content on smaller screens */
+      gap: 15px; /* Adjust gap for smaller screens */
+      align-items: center;
+  }
+
+  .job-card {
+      width: 450px; /* Reduce width for smaller screens */
+      height: 250px; /* Reduce height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .job-card {
+      width: 150px; /* Further reduce card size for mobile screens */
+      height: 200px;
+  }
+}
+
+  
+  
+  

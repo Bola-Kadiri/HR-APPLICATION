@@ -1,0 +1,18 @@
+
+
+.view-job{
+    width: 80%;
+}
+
+.view-job-top p{
+    margin: 10px 0px 10px 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 900px;
+}
+
+
+.view-job-content{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}

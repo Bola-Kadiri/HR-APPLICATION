@@ -1,0 +1,18 @@
+
+
+.view-application{
+    width: 80%;
+    background-color: #fff; 
+}
+
+.view-application-top p{
+    margin: 10px 0px 10px 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 900px;
+}
+
+.view-application-content{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,123 @@
+﻿import { useState } from "react";
+
+const Conditions = () => {
+    const [count, setCount] = useState(0);
+
+    const handleCount = () => {
+        setCount((prev) => prev + 1);
+    };
+
+    const handleDecrement = () => {
+        setCount((prev) => (prev > 0 ? prev - 1 : prev));
+    };
+
+    return (
+        <div>
+            <h2>THIS IS OUR CONDITIONS COMPONENT</h2>
+            <h4>{count}</h4>
+
+            <button onClick={handleCount}>INCREMENT COUNT</button>
+            <button onClick={handleDecrement}>DECREMENT COUNT</button> 
+        </div>
+    );
+};
+
+export default Conditions;
+
+
+
+
+// USING IF ELSE STATEMENT
+
+import { useState } from "react";
+
+const IfExample = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    if (isLoggedIn) {
+        return <h1>Welcome back!</h1>;
+    }
+    return <h1>Please log in.</h1>;
+};
+
+export default IfExample;
+
+
+//  USING TERNARY OPERATOR
+
+
+import { useState } from "react";
+
+const TernaryExample = () => {
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    return (
+        <div>
+            <h1>{isAdmin ? "Admin Panel" : "User Dashboard"}</h1>
+            <button onClick={() => setIsAdmin(!isAdmin)}>
+                {isAdmin ? "Switch to User" : "Switch to Admin"}
+            </button>
+        </div>
+    );
+};
+
+export default TernaryExample;
+
+
+
+//  USING SHORT CIRCUIT METHOD
+
+
+import { useState } from "react";
+
+const ShortCircuitExample = () => {
+    const [showMessage, setShowMessage] = useState(false);
+
+    return (
+        <div>
+            <button onClick={() => setShowMessage(!showMessage)}>
+                Toggle Message
+            </button>
+            {showMessage && <p>Hello, this is a conditional message!</p>}
+        </div>
+    );
+};
+
+export default ShortCircuitExample;
+
+
+
+//  USING SWITCH STATEMENT
+
+
+import { useState } from "react";
+
+const SwitchExample = () => {
+    const [status, setStatus] = useState("pending");
+
+    const renderStatus = () => {
+        switch (status) {
+            case "approved":
+                return <p>Status: Approved</p>;
+            case "rejected":
+                return <p>Status: Rejected</p>;
+            case "pending":
+            default:
+                return <p>Status: Pending</p>;
+        }
+    };
+
+    return (
+        <div>
+            {renderStatus()}
+            <button onClick={() => setStatus("approved")}>Approve</button>
+            <button onClick={() => setStatus("rejected")}>Reject</button>
+            <button onClick={() => setStatus("pending")}>Reset</button>
+        </div>
+    );
+};
+
+export default SwitchExample;
+
+
+
