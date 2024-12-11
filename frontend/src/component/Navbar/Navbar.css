@@ -11,8 +11,13 @@ html {
   align-items: center;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
-  background-color: #fff;
-  
+  background-color: #E9E9E9;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  z-index: 2;
 }
 
 /* Logo Styling */

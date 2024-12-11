@@ -1,101 +1,71 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { updateAccessToken, logout } from './authSlice';
 
-// Base query to be used by Redux Toolkit Query
-const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://127.0.0.1:8000/', // Django backend URL
-  prepareHeaders: (headers) => {
-    // Retrieve the token from localStorage or from the Redux state if needed
-    const token = localStorage.getItem('token');
-    if (token) {
-      headers.set('Authorization', `Bearer ${token}`);
-    }
-    return headers;
-  },
-});
-
-// Enhanced base query to handle token refresh logic
-const baseQueryWithReauth = async (args, api, extraOptions) => {
-  let result = await baseQuery(args, api, extraOptions);
-
-  if (result.error?.status === 401) {
-    const refreshToken = api.getState()?.auth?.refreshToken; // Access Redux state
-
-    if (refreshToken) {
-      const refreshResponse = await baseQuery(
-        {
-          url: 'auth/refresh/',  // Adjust this URL based on your refresh endpoint
-          method: 'POST',
-          body: { refresh: refreshToken },
-        },
-        api,
-        extraOptions
-      );
-
-      if (refreshResponse?.data) {
-        // Store the new access token in localStorage and Redux state
-        localStorage.setItem('token', refreshResponse.data.access);
-        api.dispatch(updateAccessToken(refreshResponse.data.access));
-        // Retry the original request with the new access token
-        result = await baseQuery(args, api, extraOptions);
-      } else {
-        api.dispatch(logout()); // Logout user if refresh fails
-      }
-    } else {
-      api.dispatch(logout()); // Logout user if no refresh token is available
-    }
-  }
-
-  return result;
-};
+// Fetch tokens from local storage
+const getToken = () => localStorage.getItem('accessToken');
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: baseQueryWithReauth,
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://127.0.0.1:8000/auth/',
+    prepareHeaders: (headers) => {
+      const token = getToken();
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
-    register: builder.mutation({
+    registerUser: builder.mutation({
       query: (userData) => ({
-        url: 'auth/register/',
+        url: 'users/',
         method: 'POST',
         body: userData,
       }),
     }),
-    login: builder.mutation({
+    activateUser: builder.mutation({
+      query: (activationData) => ({
+        url: 'users/activation/',
+        method: 'POST',
+        body: activationData,
+      }),
+    }),
+    loginUser: builder.mutation({
       query: (credentials) => ({
-        url: 'auth/login/',
+        url: 'jwt/create/',
         method: 'POST',
         body: credentials,
       }),
     }),
-    verifyEmail: builder.query({
-      query: ({ uid, token }) => `auth/verify-email/${uid}/${token}/`,
-    }),
-    forgotPassword: builder.mutation({
-      query: (email) => ({
-        url: 'auth/forgot-password/',
+    refreshToken: builder.mutation({
+      query: (refreshTokenData) => ({
+        url: 'jwt/refresh/',
         method: 'POST',
-        body: { email },
+        body: refreshTokenData,
       }),
     }),
     resetPassword: builder.mutation({
-      query: (data) => ({
-        url: 'auth/reset-password/',
+      query: (emailData) => ({
+        url: 'users/reset_password/',
         method: 'POST',
-        body: data,
+        body: emailData,
       }),
     }),
-    fetchProfile: builder.query({
-      query: () => 'auth/profile/',
+    resetPasswordConfirmation: builder.mutation({
+      query: (resetData) => ({
+        url: 'users/reset_password_confirm/',
+        method: 'POST',
+        body: resetData,
+      }),
     }),
   }),
 });
 
-// Export hooks for each endpoint
 export const {
-  useRegisterMutation,
-  useLoginMutation,
-  useVerifyEmailQuery,
-  useForgotPasswordMutation,
+  useRegisterUserMutation,
+  useActivateUserMutation,
+  useLoginUserMutation,
+  useRefreshTokenMutation,
   useResetPasswordMutation,
-  useFetchProfileQuery,
+  useResetPasswordConfirmationMutation,
 } = authApi;

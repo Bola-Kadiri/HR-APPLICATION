@@ -42,12 +42,10 @@ export default function AdminDashboardCrud() {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
     id: '',
-    job_title: '',
-    date_posted: '',
-    time_to_refill: '',
+    title: '',
     employment_type: '',
     location: '',
-    job_description: '',
+    description: '',
     status: '',
     expiry_date: '',
   });
@@ -62,12 +60,10 @@ export default function AdminDashboardCrud() {
     setModalOpen(false);
     setFormData({
       id: '',
-      job_title: '',
-      date_posted: '',
-      time_to_refill: '',
+      title: '',
       employment_type: '',
       location: '',
-      job_description: '',
+      description: '',
       status: '',
       expiry_date: '',
     });
@@ -75,7 +71,7 @@ export default function AdminDashboardCrud() {
 
   const handleSave = async () => {
     // Basic form validation
-    if (!formData.job_title || !formData.employment_type || !formData.job_description || !formData.location || !formData.status || !formData.expiry_date) {
+    if (!formData.title || !formData.employment_type || !formData.description || !formData.location || !formData.status || !formData.expiry_date) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -149,8 +145,8 @@ export default function AdminDashboardCrud() {
             label="Job Title"
             fullWidth
             margin="normal"
-            value={formData.job_title}
-            onChange={(e) => setFormData({ ...formData, job_title: e.target.value })}
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           />
 
           {/* Employment Type Select */}
@@ -161,9 +157,9 @@ export default function AdminDashboardCrud() {
               onChange={(e) => setFormData({ ...formData, employment_type: e.target.value })}
               label="Employment Type"
             >
-              <MenuItem value="Full-time">Full-time</MenuItem>
-              <MenuItem value="Part-time">Part-time</MenuItem>
-              <MenuItem value="Contract">Contract</MenuItem>
+              <MenuItem value="FT">Full-time</MenuItem>
+              <MenuItem value="PT">Part-time</MenuItem>
+              <MenuItem value="CT">Contract</MenuItem>
             </Select>
           </FormControl>
 
@@ -174,8 +170,8 @@ export default function AdminDashboardCrud() {
             rows={4}
             fullWidth
             margin="normal"
-            value={formData.job_description}
-            onChange={(e) => setFormData({ ...formData, job_description: e.target.value })}
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           />
 
           {/* Location Input */}
@@ -195,9 +191,9 @@ export default function AdminDashboardCrud() {
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
               label="Job Status"
             >
-              <MenuItem value="Active">Active</MenuItem>
-              <MenuItem value="Expired">Expired</MenuItem>
-              <MenuItem value="Filled">Filled</MenuItem>
+              <MenuItem value="active">active</MenuItem>
+              <MenuItem value="expired">expired</MenuItem>
+              <MenuItem value="filled">filled</MenuItem>
             </Select>
           </FormControl>
 

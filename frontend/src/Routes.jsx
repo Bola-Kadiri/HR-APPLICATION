@@ -1,4 +1,8 @@
-import { createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
+import {
+  createRoutesFromElements,
+  createBrowserRouter,
+  Route,
+} from "react-router-dom";
 import Joblist from "./pages/joblist/Joblist";
 import Admin from "./pages/admin/Admin";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -10,11 +14,12 @@ import AdminDashboardLayout from "./pages/dashboard/admin-dashboard/admin-dashbo
 import AdminDashboardCrud from "./pages/dashboard/admin-dashboard/admin-dashboard-crud/AdminDashboardCrud";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
-import ForgotPassword from "./pages/auth/ForgetPassword";
-import VerifyEmailPage from "./pages/auth/VerifyEmailPage";
 import CareerPage from "./pages/career-page/CareerPage";
 import JobPage from "./pages/job-page/JobPage";
-import ProtectedRoute from "./component/protected-route/ProtectedRoute";
+import ResetPassword from "./pages/auth/ResetPassword";
+import ResetPasswordConfirm from "./pages/auth/ResetPasswordConfirm";
+import Activate from "./pages/auth/Activate";
+
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,52 +27,32 @@ export const router = createBrowserRouter(
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/job/:id/" element={<Joblist />} />
-        <Route path="/register" element={<Register />} />
+       
         <Route path="/career-page" element={<CareerPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forget-password" element={<ForgotPassword />} />
-        <Route path="/auth/verify-email/:uid/:token" element={<VerifyEmailPage />} />
+       
         <Route path="/job-page" element={<JobPage />} />
+      </Route>
+
+      <Route>
+        <Route>
+         <Route path="/register" element={<Register />} />
+         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword/>}/>
+        <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm/>}/>
+        <Route path="/activate/:uid/:token" element={<Activate/>}/>
+        </Route>
       </Route>
 
       {/* Admin Routes */}
       <Route path="/" element={<Admin />}>
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute isAllowed={true} requiredRole="admin">
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/view-application"
-          element={
-            <ProtectedRoute isAllowed={true} requiredRole="admin">
-              <ViewApplication />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/view-job"
-          element={
-            <ProtectedRoute isAllowed={true} requiredRole="admin">
-              <ViewJob />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/view-application" element={<ViewApplication />} />
+        <Route path="/view-job" element={<ViewJob />} />
       </Route>
 
       {/* Admin Dashboard Routes */}
-      <Route path="/" element={<ProtectedRoute isAllowed={true} requiredRole="admin"><AdminDashboardLayout /></ProtectedRoute>}>
-        <Route
-          path="/admin/crud"
-          element={
-            <ProtectedRoute isAllowed={true} requiredRole="admin">
-              <AdminDashboardCrud />
-            </ProtectedRoute>
-          }
-        />
+      <Route path="/" element={<AdminDashboardLayout />}>
+        <Route path="/admin/crud" element={<AdminDashboardCrud />} />
       </Route>
     </Route>
   )

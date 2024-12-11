@@ -1,0 +1,26 @@
+
+
+.auth-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+}
+
+
+.auth-header img{
+    max-width: 110px;
+    width: 100%;
+}
+
+.auth-header span{
+    margin-right: 40px;
+}
+
+.auth-header span a{
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+

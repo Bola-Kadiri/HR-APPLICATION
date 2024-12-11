@@ -2,12 +2,13 @@
 .home {
     display: flex;
     width: 100%;
-    height: 100%;
+   
     align-items: center;
     justify-content: center;
 
     background: linear-gradient(261.16deg, rgba(17, 47, 200, 0.1) 12.85%, rgba(217, 15, 100, 0.1) 87.91%), linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 75%), url('../../assets/giant-building-with-sun.jpg');
     background-size: cover;
+    background-color: red;
   }
   
 .home-container{
@@ -17,6 +18,7 @@
     justify-content: space-between;
     background: rgba(0, 0, 0, 0.1);
     padding: 20px;
+    min-height: 100vh;
 }
 .left-para{
     width: 48%;
@@ -54,13 +56,12 @@
 .job-img{
     width:48%;
     position: relative;
-    position: relative;
     margin-left: 30px;
+    margin-top: 80px;
 }
  .job-img img{
     width: 100%;
-   
-    
+    height: 480px;
 }
 
 .about{

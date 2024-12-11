@@ -1,7 +1,7 @@
 
 import { Menu } from 'antd';
 import { useState } from 'react';
-import './Sidebar.css'
+import '../../component/sidebar/Sidebar.css'
 import {
     AppstoreOutlined,
     // ContainerOutlined,
@@ -101,7 +101,7 @@ const Sidebar = ()=>{
             minHeight: '100vh',
             fontSize: '15px',
             width: '100%', // Set to 100% so it uses the full width of the parent div
-            textDecoration: 'none'
+            textDecoration: 'none',
           }}
         />
         </div>

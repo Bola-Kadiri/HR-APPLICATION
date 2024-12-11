@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -31,25 +32,28 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'job',
     'application',
+    'user_authentication', 
     'corsheaders',  # Ensure corsheaders is included
     'rest_framework',
     'rest_framework_simplejwt',
+    'djoser',
     'django_extensions',
+    
+
 ]
 
+
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+   'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Ensures public access by default
     ],
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 MIDDLEWARE = [
@@ -69,10 +73,14 @@ CORS_ALLOWED_ORIGINS = [
 
 ROOT_URLCONF = 'backend_app.urls'
 
+AUTH_USER_MODEL = 'user_authentication.UserAccount'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+         'DIRS': [
+            os.path.join(BASE_DIR, 'frontend', 'build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +103,7 @@ WSGI_APPLICATION = 'backend_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hr-corp-it',
+        'NAME': 'new-hr',
         'USER': 'postgres',
         'PASSWORD': '1511',
         'HOST': 'localhost',
@@ -103,20 +111,7 @@ DATABASES = {
     }
 }
 
-# Rest Framework additional settings for rendering and parsing
-REST_FRAMEWORK.update({
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ],
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-    ],
-    
-      'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-  
-})
+
 
 
 # Password validation
@@ -150,11 +145,35 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'  # URL for serving static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory where collectstatic will store static files
 
+
+
+
+DJOSER ={
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION':True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'SET_USERNAME_RETYPE': True,
+    'SET_PASSWORD_RETYPE': True,
+   'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {
+        'user_create': 'user_authentication.serializers.UserCreateSerializer',
+        'user': 'user_authentication.serializers.UserCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer'
+        
+    }
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -183,7 +202,6 @@ FRONTEND_URL = "http://localhost:5173"
 
 # Use your custom authentication backend
 AUTHENTICATION_BACKENDS = [
-    'authentication.authentication.EmailAuthBackend',  # Custom authentication backend
     'django.contrib.auth.backends.ModelBackend',  # Default backend for other use cases
 ]
 
